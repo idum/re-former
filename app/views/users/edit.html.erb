@@ -1,0 +1,22 @@
+<h1> Modifichiamo l'utente </h1>
+
+<% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+<% end %>
+<%= form_with model: @user, method: "patch" do |form| %>
+    <%= form.label :username, "Please insert an username:"%><br>
+    <%= form.text_field :username %><br>
+    <%= form.label :password, "Please insert a password:" %><br>
+    <%= form.password_field :password %><br>
+    <%= form.label :email, "Please insert an email" %><br>
+    <%= form.email_field :email%><br>
+    <%= form.submit "Create"%>
+<% end %>
